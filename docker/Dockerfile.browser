@@ -1,0 +1,61 @@
+FROM node:lts-alpine
+
+MAINTAINER Damien Duboeuf <smeagolworms4@gmail.com>
+
+ADD app /mqtt-explorer/app/app
+ADD backend /mqtt-explorer/app/backend
+ADD events /mqtt-explorer/app/events
+ADD node-server /mqtt-explorer/app/node-server
+ADD res /mqtt-explorer/app/res
+ADD scripts /mqtt-explorer/app/scripts
+ADD src /mqtt-explorer/app/src
+
+ADD  .cspell.json /mqtt-explorer/app/.cspell.json
+ADD  .eslintrc.json /mqtt-explorer/app/.eslintrc.json
+ADD  .prettierignore /mqtt-explorer/app/.prettierignore
+ADD  appveyor.yml /mqtt-explorer/app/appveyor.yml
+ADD  Changelog.md /mqtt-explorer/app/Changelog.md
+ADD  greenkeeper.json /mqtt-explorer/app/greenkeeper.json
+ADD  icon.png /mqtt-explorer/app/icon.png
+ADD  icon.xcf /mqtt-explorer/app/icon.xcf
+ADD  LICENSE.md /mqtt-explorer/app/LICENSE.md
+ADD  package.json /mqtt-explorer/app/package.json
+ADD  package.ts /mqtt-explorer/app/package.ts
+ADD  prettier.config.js /mqtt-explorer/app/prettier.config.js
+ADD  tsconfig.json /mqtt-explorer/app/tsconfig.json
+ADD  tslint.json /mqtt-explorer/app/tslint.json
+ADD  yarn.lock /mqtt-explorer/app/yarn.lock
+
+RUN mkdir -p /mqtt-explorer/config
+
+WORKDIR /mqtt-explorer/app/
+
+RUN apk add --no-cache git python make g++\
+    && yarn cache clean\
+    && yarn install --network-timeout 1000000\
+    && yarn build:browser\
+    && rm -rfv /mqtt-explorer/app/node_modules\
+    && yarn install --production=true --network-timeout 1000000\
+    && rm -rf /mqtt-explorer/app/node-server/node_modules && cd /mqtt-explorer/app/node-server && yarn install --production=true --network-timeout 1000000\
+    && rm -rf /mqtt-explorer/app/node_modules/**/*.ts\
+    && rm -rf rm -rf /mqtt-explorer/app/app/node_modules /mqtt-explorer/app/app/src\
+    && yarn cache clean\
+    && apk del git python make g++\
+    && rm -rf /var/cache/apk/*
+
+ENV HTTP_PORT=4000 \
+    CONFIG_PATH=/mqtt-explorer/config\
+    HTTP_USER=\
+    HTTP_PASSWORD=\
+    SSL_KEY_PATH=\
+    SSL_CERT_PATH=
+
+EXPOSE 4000
+
+CMD node node-server/server/dist/node-server/server/src/index.js \
+   --http-port=$HTTP_PORT \
+   --config-path=$CONFIG_PATH \
+   --http-user=$HTTP_USER \
+   --http-password=$HTTP_PASSWORD\
+   --ssl-key-path=$SSL_KEY_PATH\
+   --ssl-cert-path=$SSL_CERT_PATH
