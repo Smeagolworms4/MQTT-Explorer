@@ -1,5 +1,7 @@
 import { io } from '../server/node_modules/socket.io-client'
-const socket = io()
+const socket = io(window.location.host , {
+  path: window.location.pathname + 'socket.io',
+})
 
 const wait = async () => {
   if (!socket.connected) {

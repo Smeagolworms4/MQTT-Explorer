@@ -113,7 +113,7 @@ const staticDir = path.resolve(__dirname, '../../../../../../app/build-browser')
 app.use(express.static(staticDir))
 
 app.get('/', (req, res) => {
-  res.send(fs.readFileSync(path.resolve(staticDir, 'index.html')))
+  res.header('content-type', 'text/html').send(fs.readFileSync(path.resolve(staticDir, 'index.html')))
 })
 
 const connectionManager = new ConnectionManager()
