@@ -30,7 +30,7 @@ RUN mkdir -p /mqtt-explorer/config
 
 WORKDIR /mqtt-explorer/app/
 
-RUN apk update && apk add --no-cache git python3 py3-pip make g++\
+RUN apk add --no-cache git python3 py3-pip make g++\
     && yarn cache clean\
     && yarn install --network-timeout 1000000\
     && yarn build:browser\
@@ -40,7 +40,7 @@ RUN apk update && apk add --no-cache git python3 py3-pip make g++\
     && rm -rf /mqtt-explorer/app/node_modules/**/*.ts\
     && rm -rf rm -rf /mqtt-explorer/app/app/node_modules /mqtt-explorer/app/app/src\
     && yarn cache clean\
-    && apk del git python make g++\
+    && apk del git python3 py3-pip make g++\
     && rm -rf /var/cache/apk/*
 
 ENV HTTP_PORT=4000 \
