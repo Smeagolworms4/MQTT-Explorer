@@ -1,12 +1,14 @@
 @media (max-width: 880px) {
-    .jss200 {
+    .jss200,
+    .jss207 {
         min-width: initial;
         max-height: 100vh;
         height: max-content;
         position: relative;
         margin: auto;
     }
-    .jss201 {
+    .jss201,
+    .jss208 {
         position: absolute;
         z-index: 20;
         top: 0;
@@ -21,7 +23,8 @@
         overflow: hidden;
         border: none;
     }
-    .jss201:before {
+    .jss201:before,
+    .jss208:before {
         content: ' ';
         display: block;
         width: 35px;
@@ -38,78 +41,104 @@
         transition: all 0.5s;
         opacity: 1;
     }
-    .jss201 > * {
+    .jss208:before {
+        background: #AAA;
+        box-shadow: 0 10px 0 #AAA, 0 20px 0 #AAA;
+    }
+    .jss201 > *,
+    .jss208 > * {
         opacity: 0;
         transition: opacity 0.5s;
         pointer-events: none;
     }
-    .jss201:hover {
+    .jss201:hover,
+    .jss208:hover {
         max-width: 1200px;
         max-height: 1200px;
         box-shadow: 0 0 5px #000;
         background: #fff;
     }
-    .jss201:hover:before {
+    .jss208:hover {
+        background: #424242;
+    }
+    .jss201:hover:before,
+    .jss208:hover:before {
         opacity: 0;
         pointer-events: none;
     }
-    .jss201:hover > * {
+    .jss201:hover > *,
+    .jss208:hover > * {
         opacity: 1;
         pointer-events: initial;
     }
 
-    .jss202 {
+    .jss202,
+    .jss209 {
         overflow: auto;
     }
-    .jss202 .MuiCollapse-container .MuiGrid-root > div {
+    .jss202 .MuiCollapse-container .MuiGrid-root > div,
+    .jss209 .MuiCollapse-container .MuiGrid-root > div {
         min-width: initial;
         max-width: initial;
         width: 100%;
         flex-basis: auto;
         margin: 0 0 5px 0 ;
     }
-    .jss202 .jss342 label {
+    .jss202 .jss342 label,
+    .jss209 .jss342 label {
         flex-direction: row;
     }
 
-    .jss202 form > div:last-child {
+    .jss202 form > div:last-child,
+    .jss209 form > div:last-child {
         position: sticky;
         background: #FFF;
         z-index: 10;
         bottom: -13px;
     }
-    .jss202 form > div:last-child:after {
+    .jss209 form > div:last-child {
+        background: #424242;
+    }
+    .jss202 form > div:last-child:after,
+    .jss209 form > div:last-child:after {
         content: ' ';
         display: block;
         clear: both;
     }
 
 
-    .jss4 > header > div > button:nth-child(5) {
+    .jss4 > header > div > button:nth-child(5),
+    .jss11 > header > div > button:nth-child(5) {
         text-indent: -99999px;
         margin: 0;
         min-width: 30px;
     }
-    .jss4 > header > div > button:nth-child(5) svg {
+    .jss4 > header > div > button:nth-child(5) svg,
+    .jss11 > header > div > button:nth-child(5) svg {
         display: block !important;
     }
 
-    .jss4 > header > div > div:nth-child(6) {
+    .jss4 > header > div > div:nth-child(6),
+    .jss11 > header > div > div:nth-child(6) {
         display: none !important;
     }
 
-    .jss1 .Resizer.vertical  {
+    .jss1 .Resizer.vertical,
+    .jss8 .Resizer.vertical  {
         display: none;
     }
 
-    .jss1 .Pane1 > div {
+    .jss1 .Pane1 > div,
+    .jss8 .Pane1 > div {
         overflow: auto !important;
     }
-    .jss556 {
+    .jss556,
+    .jss563 {
         width: max-content;
     }
 
-    .jss1 > .Pane2 {
+    .jss1 > .Pane2,
+    .jss8 > .Pane2 {
         position: absolute !important;
         top: 0;
         right: 0;
@@ -118,32 +147,38 @@
         overflow: hidden;
         background: transparent;
     }
-    .jss1 > .Pane2:before {
+    .jss1 > .Pane2:before,
+    .jss8 > .Pane2:before {
         content: '🡸';
         font-size: 36px;
         color: #777;
     }
-    .jss1 > .Pane2 > * {
+    .jss1 > .Pane2 > *,
+    .jss8 > .Pane2 > * {
         opacity: 0;
         pointer-events: none;
     }
 
-    .jss1 > .Pane2:hover {
+    .jss1 > .Pane2:hover,
+    .jss8 > .Pane2:hover {
         width: calc(100% - 50px) !important;
         height: 100% !important;
         overflow: auto;
         box-shadow: 0 0 10px #000;
     }
-    .jss1 > .Pane2:hover:before {
+    .jss1 > .Pane2:hover:before,
+    .jss8 > .Pane2:hover:before {
         display: none;
     }
 
-    .jss1 > .Pane2:hover > * {
+    .jss1 > .Pane2:hover > *,
+    .jss8 > .Pane2:hover > * {
         opacity: 1;
         pointer-events: initial;
     }
 
-    .jss1 > .Pane1:has(~ .Pane2:hover):after {
+    .jss1 > .Pane1:has(~ .Pane2:hover):after,
+    .jss8 > .Pane1:has(~ .Pane2:hover):after {
         position: absolute !important;
         top: 0;
         right: 0;
@@ -154,10 +189,12 @@
         color: #777;
     }
 
-    .jss1 >  .Pane1  .Resizer.horizontal  {
+    .jss1 >  .Pane1  .Resizer.horizontal,
+    .jss8 >  .Pane1  .Resizer.horizontal {
         display: none;
     }
-    .jss1 > .Pane1 .Pane2  {
+    .jss1 > .Pane1 .Pane2,
+    .jss8 > .Pane1 .Pane2 {
         position: absolute !important;
         bottom: 0;
         right: 0;
@@ -167,7 +204,8 @@
         background: transparent;
         border: none !important;
     }
-    .jss1 > .Pane1 .Pane2:before {
+    .jss1 > .Pane1 .Pane2:before,
+    .jss8 > .Pane1 .Pane2:before {
         content: '🡹';
         font-size: 36px;
         color: #777;
@@ -175,20 +213,24 @@
         display: block;
         width: 100%;
     }
-    .jss1 > .Pane1 .Pane2 > * {
+    .jss1 > .Pane1 .Pane2 > *,
+    .jss8 > .Pane1 .Pane2 > * {
         display: none !important;
     }
-    .jss1 > .Pane1 .Pane2:hover {
+    .jss1 > .Pane1 .Pane2:hover,
+    .jss8 > .Pane1 .Pane2:hover {
         width: 100% !important;
         height: calc(100% - 50px)!important;
         overflow: auto;
         box-shadow: 0 0 10px #000;
         background: #FFF;
     }
-    .jss1 > .Pane1 .Pane2:hover:before {
+    .jss1 > .Pane1 .Pane2:hover:before,
+    .jss8 > .Pane1 .Pane2:hover:before {
         display: none;
     }
-    .jss1 > .Pane1 .Pane2:hover > * {
+    .jss1 > .Pane1 .Pane2:hover > *,
+    .jss8 > .Pane1 .Pane2:hover > * {
         display: flex !important;
     }
 }
