@@ -10,6 +10,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
+    tags: [ * ]
 
 jobs:
   # This workflow contains a single job called "build"
@@ -57,7 +58,7 @@ jobs:
           # If the VERSION looks like a version number, assume that
           # this is the most recent version of the image and also
           # tag it 'latest'.
-          if [[ $VERSION =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+          if [[ $VERSION =~ "master" ]]; then
             TAGS="${DOCKER_IMAGE}:${VERSION}"
           fi
 
