@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
-    "dev": "npm run clean && tsc-watch --onSuccess \"npm run start\"",
+    "dev": "npm run clean && tsc-watch --noClear --onSuccess \"npm run start\"",
     "start": "node dist/node-server/server/src/index.js"
   },
   "author": "",

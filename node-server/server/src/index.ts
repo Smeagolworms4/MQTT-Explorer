@@ -109,12 +109,19 @@ if (httpUser && httpPassword) {
 ipcSocketIo.init(io)
 
 const staticDir = path.resolve(__dirname, '../../../../../../app/build-browser')
-
-app.use(express.static(staticDir))
+const assetsDir = path.resolve(__dirname, '../../../../../assets')
 
 app.get('/', (req, res) => {
-  res.header('content-type', 'text/html').send(fs.readFileSync(path.resolve(staticDir, 'index.html')))
+  let content = fs.readFileSync(path.resolve(staticDir, 'index.html')).toString()
+  content = content.replace('</body>', '<link rel="stylesheet" href="./mobile.css" /></body>')
+  res.header('content-type', 'text/html').send(content)
 })
+
+app.get('/mobile.css', (req, res) => {
+  res.header('content-type', 'text/css').send(fs.readFileSync(path.resolve(assetsDir, 'mobile.css')))
+})
+
+app.use(express.static(staticDir))
 
 const connectionManager = new ConnectionManager()
 connectionManager.manageConnections()

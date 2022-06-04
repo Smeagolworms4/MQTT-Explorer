@@ -1,0 +1,194 @@
+@media (max-width: 880px) {
+    .jss200 {
+        min-width: initial;
+        max-height: 100vh;
+        height: max-content;
+        position: relative;
+        margin: auto;
+    }
+    .jss201 {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: transparent;
+        max-width: 60px;
+        max-height: 60px;
+        width: 230px;
+        transition: all 0.5s;
+        box-shadow: 0 0 0 #000;
+        overflow: hidden;
+        border: none;
+    }
+    .jss201:before {
+        content: ' ';
+        display: block;
+        width: 35px;
+        height: 6px;
+        border-radius: 6px;
+        background: #777;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        z-index: 2;
+        box-shadow: 0 10px 0 #555, 0 20px 0 #777;
+        pointer-events: none;
+        overflow: auto;
+        transition: all 0.5s;
+        opacity: 1;
+    }
+    .jss201 > * {
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+    }
+    .jss201:hover {
+        max-width: 1200px;
+        max-height: 1200px;
+        box-shadow: 0 0 5px #000;
+        background: #fff;
+    }
+    .jss201:hover:before {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .jss201:hover > * {
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .jss202 {
+        overflow: auto;
+    }
+    .jss202 .MuiCollapse-container .MuiGrid-root > div {
+        min-width: initial;
+        max-width: initial;
+        width: 100%;
+        flex-basis: auto;
+        margin: 0 0 5px 0 ;
+    }
+    .jss202 .jss342 label {
+        flex-direction: row;
+    }
+
+    .jss202 form > div:last-child {
+        position: sticky;
+        background: #FFF;
+        z-index: 10;
+        bottom: -13px;
+    }
+    .jss202 form > div:last-child:after {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+
+
+    .jss4 > header > div > button:nth-child(5) {
+        text-indent: -99999px;
+        margin: 0;
+        min-width: 30px;
+    }
+    .jss4 > header > div > button:nth-child(5) svg {
+        display: block !important;
+    }
+
+    .jss4 > header > div > div:nth-child(6) {
+        display: none !important;
+    }
+
+    .jss1 .Resizer.vertical  {
+        display: none;
+    }
+
+    .jss1 .Pane1 > div {
+        overflow: auto !important;
+    }
+    .jss556 {
+        width: max-content;
+    }
+
+    .jss1 > .Pane2 {
+        position: absolute !important;
+        top: 0;
+        right: 0;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: hidden;
+        background: transparent;
+    }
+    .jss1 > .Pane2:before {
+        content: '🡸';
+        font-size: 36px;
+        color: #777;
+    }
+    .jss1 > .Pane2 > * {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .jss1 > .Pane2:hover {
+        width: calc(100% - 50px) !important;
+        height: 100% !important;
+        overflow: auto;
+        box-shadow: 0 0 10px #000;
+    }
+    .jss1 > .Pane2:hover:before {
+        display: none;
+    }
+
+    .jss1 > .Pane2:hover > * {
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .jss1 > .Pane1:has(~ .Pane2:hover):after {
+        position: absolute !important;
+        top: 0;
+        right: 0;
+        width: 50px !important;
+        height: 50px !important;
+        content: '🡸';
+        font-size: 36px;
+        color: #777;
+    }
+
+    .jss1 >  .Pane1  .Resizer.horizontal  {
+        display: none;
+    }
+    .jss1 > .Pane1 .Pane2  {
+        position: absolute !important;
+        bottom: 0;
+        right: 0;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: hidden;
+        background: transparent;
+        border: none !important;
+    }
+    .jss1 > .Pane1 .Pane2:before {
+        content: '🡹';
+        font-size: 36px;
+        color: #777;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    .jss1 > .Pane1 .Pane2 > * {
+        display: none !important;
+    }
+    .jss1 > .Pane1 .Pane2:hover {
+        width: 100% !important;
+        height: calc(100% - 50px)!important;
+        overflow: auto;
+        box-shadow: 0 0 10px #000;
+        background: #FFF;
+    }
+    .jss1 > .Pane1 .Pane2:hover:before {
+        display: none;
+    }
+    .jss1 > .Pane1 .Pane2:hover > * {
+        display: flex !important;
+    }
+}
