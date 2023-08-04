@@ -38,3 +38,7 @@ https://hub.docker.com/r/smeagolworms4/mqtt-explorer
 ## Github
 
 https://github.com/Smeagolworms4/MQTT-Explorer
+
+## Home Assistant Addon
+
+https://github.com/GollumDom/addon-repository
