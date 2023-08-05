@@ -71,10 +71,11 @@
         opacity: 1;
         pointer-events: initial;
     }
-
+    
     .jss202,
     .jss209 {
         overflow: auto;
+        padding-bottom: 100px;
     }
     .jss202 .MuiCollapse-container .MuiGrid-root > div,
     .jss209 .MuiCollapse-container .MuiGrid-root > div {

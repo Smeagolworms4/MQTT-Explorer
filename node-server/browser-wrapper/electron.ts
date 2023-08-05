@@ -1,3 +1,4 @@
+import './polyfill';
 import { ipcSocketIo } from './IpcSocketIo'
 import packageJson from '../../package.json'
 
