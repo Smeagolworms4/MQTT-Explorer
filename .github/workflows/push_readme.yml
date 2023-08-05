@@ -27,5 +27,5 @@ jobs:
       - name: Push readme
         run: |
           DOCKERHUB_REPO_NAME=${GITHUB_REPOSITORY#*/}
-          docker run --rm  -v $(pwd)/Readme.NodeServer.md:/data/README.md -e DOCKERHUB_USERNAME=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_PASSWORD=${{ secrets.DOCKER_PASSWORD }} -e DOCKERHUB_REPO_PREFIX=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_REPO_NAME=$DOCKERHUB_REPO_NAME sheogorath/readme-to-dockerhub
+          docker run --rm  -v $(pwd)/Readme.md:/data/README.md -e DOCKERHUB_USERNAME=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_PASSWORD=${{ secrets.DOCKER_PASSWORD }} -e DOCKERHUB_REPO_PREFIX=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_REPO_NAME=$DOCKERHUB_REPO_NAME sheogorath/readme-to-dockerhub
           
