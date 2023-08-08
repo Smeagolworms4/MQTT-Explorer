@@ -28,8 +28,5 @@ jobs:
         run: |
           DOCKERHUB_REPO_NAME=$(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]')
           TOKEN=$(curl -s -X POST -H "Content-Type: application/json" -d '{"username": "${{ secrets.DOCKER_USERNAME }}", "password": "${{ secrets.DOCKER_PASSWORD }}"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
-          cat ./Readme.md
-          ls
           DESC=$(cat ./Readme.md | jq -sR .)
-          echo $DESC
           curl -s -X PATCH -H "Authorization: JWT $TOKEN" -H "Content-Type: application/json" -d "{\"full_description\": $DESC}" https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/$DOCKERHUB_REPO_NAME/
