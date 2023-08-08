@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:16-alpine AS builder
 
 MAINTAINER Damien Duboeuf <smeagolworms4@gmail.com>
 
@@ -43,14 +43,24 @@ RUN apk add --no-cache git python3 py3-pip make g++\
     && apk del git python3 py3-pip make g++\
     && rm -rf /var/cache/apk/*
 
+FROM node:lts-alpine AS runner
+
+WORKDIR /mqtt-explorer/app/
+
+COPY --from=builder --chown=node:node /mqtt-explorer /mqtt-explorer
+
 ENV HTTP_PORT=4000 \
     CONFIG_PATH=/mqtt-explorer/config\
     HTTP_USER=\
     HTTP_PASSWORD=\
     SSL_KEY_PATH=\
-    SSL_CERT_PATH=
+    SSL_CERT_PATH=\
+    INITIAL_CONFIG=
 
 EXPOSE 4000
+
+ADD docker/entrypoint.browser.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD node node-server/server/dist/node-server/server/src/index.js \
    --http-port=$HTTP_PORT \

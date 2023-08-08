@@ -28,6 +28,7 @@ HTTP_USER=
 HTTP_PASSWORD=
 SSL_KEY_PATH=
 SSL_CERT_PATH=
+INITIAL_CONFIG= # Initial json configuration for start
 ```
 
 
