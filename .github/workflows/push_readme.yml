@@ -29,4 +29,5 @@ jobs:
           DOCKERHUB_REPO_NAME=$(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]')
           TOKEN=$(curl -s -X POST -H "Content-Type: application/json" -d '{"username": "${{ secrets.DOCKER_USERNAME }}", "password": "${{ secrets.DOCKER_PASSWORD }}"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
           DESC=$(cat ./Readme.md | jq -sR .)
-          curl -s -X PATCH -H "Authorization: JWT $TOKEN" -H "Content-Type: application/json" -d "{\"full_description\": $DESC}" https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/$DOCKERHUB_REPO_NAME/
+          GH_DESCRIPTION=$(curl -s "https://api.github.com/repos/${GITHUB_REPOSITORY}" | jq -r .description | jq -sR .)
+          curl -s -X PATCH -H "Authorization: JWT $TOKEN" -H "Content-Type: application/json" -d "{\"full_description\": $DESC, \"description\": GH_DESCRIPTION}" https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/$DOCKERHUB_REPO_NAME/
