@@ -27,5 +27,5 @@ jobs:
       - name: Push readme
         run: |
           DOCKERHUB_REPO_NAME=${GITHUB_REPOSITORY#*/}
-          docker run --rm  -v $(pwd)/Readme.md:/data/README.md -e DOCKERHUB_USERNAME=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_PASSWORD=${{ secrets.DOCKER_PASSWORD }} -e DOCKERHUB_REPO_PREFIX=${{ secrets.DOCKER_USERNAME }} -e DOCKERHUB_REPO_NAME=$DOCKERHUB_REPO_NAME sheogorath/readme-to-dockerhub
-          
+          TOKEN=$(curl -s -X POST -H "Content-Type: application/json" -d '{"username": "${{ secrets.DOCKER_USERNAME }}", "password": "${{ secrets.DOCKER_PASSWORD }}"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
+          curl -s -X PATCH -H "Authorization: JWT $TOKEN" -H "Content-Type: application/json" -d "{\"full_description\": \"$(<Readme.md)\"}" https://hub.docker.com/v2/repositories/${{ secrets.DOCKER_USERNAME }}/$DOCKERHUB_REPO_NAME/
